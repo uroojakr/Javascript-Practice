@@ -1,0 +1,46 @@
+//spread operator
+const colors = ['red','green','blue','white'];
+const myColors = ['red','green','blue','white','brown','black'];
+
+//instead of Repeating using spread now
+const myFavColors = [...colors, 'brown', 'black'];
+
+console.log(myFavColors);
+
+
+//rest/spread for object
+const person1 = {name: "John", age: 30};
+const person2 = {age: 45, city: "New York"};
+const mergedPerson = { ...person1, ...person2 };
+const mergedPeople = [person1, person2];
+console.log(mergedPeople);
+console.log(mergedPerson);
+
+//ES7 FEATURES
+//1- array include
+if (myColors.includes('yellow')) {
+    console.log("Yellow is in the list");
+}
+else{
+    console.log("Yellow not found");
+}
+//2- String repeat method
+let str = "hello";
+let repeatedStr = str.repeat(3);
+console.log(repeatedStr);
+
+
+
+//ES8 Features
+// string padding
+const msg =  "random";
+const paddedMsg = msg.padStart(50,"*");
+console.log(paddedMsg);
+const paddedMsg2 = msg.padEnd(10,"$");
+console.log(paddedMsg2);
+
+//object values
+const data = [fname='urooj', location='isb'];
+console.log(Object.values(data));
+console.log(Object.keys(data));
+console.log(Object.entries(data));

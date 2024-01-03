@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SetInterval</title>
+</head>
+<body>
+    <h1>SetInterval Example</h1>
+    <p id="output">The time will update Every SECOND</p> 
+    <script>
+        const output = document.getElementById('output');
+        const updateTime = () => {
+            const currTime = new Date();
+            output.textContent = 'Current time: '+currTime.toLocaleTimeString();
+        }
+        updateTime();
+        const intervalID = setInterval(updateTime,1000);
+
+        setTimeout(() => {
+            clearInterval(intervalID);
+            output.textContent = 'The time has ended after 5 seconds';
+        }, 5000)
+    </script>
+</body>
+</html>

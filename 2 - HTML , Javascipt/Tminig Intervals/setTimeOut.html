@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeout Example</title>
+    <style>
+        #message {
+            display: none;
+            font-size: 24px;
+            color: blue;
+            text-align: center;
+            margin-top:20px ;
+        }
+    </style>
+</head>
+<body>
+    <h1>setTimeout Example</h1>
+    <button id="showButton">Show Message</button>
+    <div id="message">This message will show after a delay</div>
+    <script>
+        const showButton = document.getElementById('showButton');
+        const message = document.getElementById('message');
+        let timeoutID;
+
+        showButton.addEventListener('click', () =>
+        {
+            showButton.style.display = 'none';
+            //showButton.innerHTML = "Loading";
+            timeoutID = setTimeout(() => message.style.display = 'block',3000);
+            // clearTimeout(timeoutID);
+            // console.log('timeout has been cancelled');
+        });
+    </script>
+</body>
+</html>

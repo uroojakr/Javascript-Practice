@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country Information</title>
+    <style>
+        body {
+            background: linear-gradient(45deg, #d8dbdf, #197c3f);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        #card {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 1px solid #ddd;
+            color: #333;
+            border-radius: 5px;
+            padding: 80px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+        #card img {
+            max-width: 100px;
+            height: auto;
+        }
+        #card h1 {
+            color: #333;
+            font-size: 24px;
+        }
+        #card p {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="card"></div>
+    </div>
+
+    <script>
+        const container = document.querySelector("#card");
+        const request = new XMLHttpRequest();
+        request.open("GET", "https://restcountries.com/v3.1/name/pakistan");
+        request.send();
+
+        // To get the response
+        request.addEventListener('load', function(){
+            const [data] = JSON.parse(this.responseText);
+            console.log(data);
+            console.log(data.capital);
+            const htmlData = `
+                <img src="${data.flags.png}" />
+                <h1>${data.name.common}</h1>
+                <p>Capital: ${data.capital}</p>
+                <p>Population: ${data.population}</p>
+                <p>Region: ${data.region}</p>
+                <p>Subregion: ${data.subregion}</p>
+            `;
+            container.innerHTML = htmlData;
+        })
+    </script>
+</body>
+</html>

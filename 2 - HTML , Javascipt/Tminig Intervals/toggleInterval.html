@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>toggleInterval</title>
+</head>
+<body>
+    <h1>Toggle Interval</h1>
+    <p id="output"></p>
+    <button id="toggleButton">Start</button>
+
+    <script>
+        const output = document.getElementById('output');
+        const toggleButton = document.getElementById('toggleButton');
+        let intervalID;
+        let isIntervalRunning = false;
+
+        const updateTime = () => {
+            const currTime = new Date();
+            output.textContent = 'Current time: '+currTime.toLocaleTimeString();
+        }
+
+        const toggleInterval = () => {
+            if(isIntervalRunning) 
+            {
+                clearInterval(intervalID);
+                isIntervalRunning = false;
+                toggleButton.textContent = 'Start';
+            }
+            else 
+            {
+                updateTime();
+                intervalID = setInterval(updateTime,1000);
+                isIntervalRunning = true;
+                toggleButton.textContent = 'Stop';
+            }
+        }
+        toggleButton.addEventListener('click', toggleInterval);
+    </script>
+</body>
+</html>
